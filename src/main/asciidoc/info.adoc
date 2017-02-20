@@ -57,3 +57,5 @@ following method:
 org.onepointltd.json.converter.MongoCommands.asJavascript(boolean inFunction)
 ----
 
+Using this method produces a Javascript statement similar to the one displayed above.
+
