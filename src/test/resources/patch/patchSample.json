@@ -1,0 +1,81 @@
+[
+  {
+    "op": "replace",
+    "path": "/firstName",
+    "value": "Aaliyah"
+  },
+  {
+    "op": "replace",
+    "path": "/initials",
+    "value": "Hinton"
+  },
+  {
+    "op": "replace",
+    "path": "/extraNames/extraNames/0/nameType",
+    "value": "Complete nam"
+  },
+  {
+    "op": "add",
+    "path": "/extraNames/extraNames/0/tested",
+    "value": 1496271600000
+  },
+  {
+    "op": "replace",
+    "path": "/contactPoints/contactPoints/1/contactEmailAddress/emailCategory",
+    "value": "Business"
+  },
+  {
+    "op": "replace",
+    "path": "/contactPoints/contactPoints/1/contactEmailAddress/emailAddress/email",
+    "value": "aaliyah.hinton@erntogra.com"
+  },
+  {
+    "op": "replace",
+    "path": "/contactPoints/contactPoints/2/contactEmailAddress/emailCategory",
+    "value": "Private"
+  },
+  {
+    "op": "replace",
+    "path": "/contactPoints/contactPoints/2/contactEmailAddress/emailAddress/email",
+    "value": "aaliyah.hinton@gmail.com"
+  },
+  {
+    "op": "remove",
+    "path": "/contactPoints/contactPoints/3"
+  },
+  {
+    "op": "replace",
+    "path": "/contactPoints/contactPoints/4/contactAddress/careOf",
+    "value": "Aaliyah Hinton"
+  },
+  {
+    "op": "add",
+    "path": "/notes/notes/1",
+    "value": {
+      "note": "VqU2PkH0G",
+      "noteType": "ID card details",
+      "noteCode": "ID Card",
+      "noteSource": "C4C123"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/notes/notes/2",
+    "value": {
+      "note": "VqU2PkH0G",
+      "noteType": "ID card details",
+      "noteCode": "ID Card",
+      "noteSource": "C4C123"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/version1",
+    "value": 3
+  },
+  {
+    "op": "add",
+    "path": "/version2",
+    "value": 3
+  }
+]

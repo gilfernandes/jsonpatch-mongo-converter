@@ -1,0 +1,68 @@
+[
+  {
+    "op": "replace",
+    "path": "/lastName",
+    "value": "Morales"
+  },
+  {
+    "op": "add",
+    "path": "/notes/notes/1",
+    "value": {
+      "note": "9QjNDYHNx",
+      "noteType": "ID card details",
+      "noteCode": "ID Card",
+      "noteSource": "8910470",
+      "test": "123"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/contactPoints/contactPoints/2",
+    "value": {
+      "priorityType": "high",
+      "qualityLevel": "good",
+      "lastUpdateSource": "C4C",
+      "contactAccount": null,
+      "contactPhoneNumber": null,
+      "contactAddress": null,
+      "contactEmailAddress": {
+        "emailCategory": "Business",
+        "emailAddress": {
+          "email": "arianna.morales@gmail.com"
+        }
+      },
+      "relatedContactPointId": null,
+      "lastValidated": 1369184569000,
+      "effectiveFrom": 1485734400000,
+      "effectiveTo": 1533769200000,
+      "correlationID": "9692b484-3b5f-45fd-b514-1c146e5a3295"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/contactPoints/contactPoints/3",
+    "value": {
+      "priorityType": "high",
+      "qualityLevel": "good",
+      "lastUpdateSource": "C4C",
+      "contactAccount": null,
+      "contactPhoneNumber": null,
+      "contactAddress": null,
+      "contactEmailAddress": {
+        "emailCategory": "Business",
+        "emailAddress": {
+          "email": "arianna.morales@yahoo.de"
+        }
+      },
+      "relatedContactPointId": null,
+      "lastValidated": 1369184569000,
+      "effectiveFrom": 1485734400000,
+      "effectiveTo": 1533769200000,
+      "correlationID": "9692b484-3b5f-45fd-b514-1c146e5a3295"
+    }
+  },
+  {
+    "op": "remove",
+    "path": "/preferences/preferences/0"
+  }
+]

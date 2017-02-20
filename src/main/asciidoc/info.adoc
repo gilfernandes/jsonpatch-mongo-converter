@@ -1,0 +1,59 @@
+= JsonPatch to Mongo DB Update
+Gil Fernandes <gil.fernandes@onepointltd.com>
+:toc: left
+:source-highlighter: coderay
+:imagesdir: src/main/asciidoc/images
+:doctype: article
+:homepage: http://www.onepointltd.com
+:pdf-page-size: A4
+
+== Abstract
+This small project was created to convert JSON patch files in the format
+described in *https://tools.ietf.org/html/rfc6902[RFC 6902]* to MongoDB update statements which you can
+execute directly against a MongoDB database. These updates can partially update a MongoDB document.
+
+== Implementation Details
+The main class in this project is:
+
+----
+org.onepointltd.json.converter.JsonPatchToMongoUpdate
+----
+
+This class contains 2 public methods:
+
+----
+public MongoConversion convert(Reader reader)
+----
+
+and
+
+----
+public MongoCommands convertToMongoUpdates(Reader reader, String query, String collection, String ... prefixes)
+----
+
+The first method converts whatever was read into an in memory data structure
+and the second one will produce 3 Mongo commands in Javascript for:
+
+* unset (delete)
+* set (update)
+* push (insert)
+
+Each of these commands can be then used in a MongoDB Javascript command, like e.g:
+
+[source,javascript]
+----
+function update() {
+    db.customer.update ( { _id: ObjectId("58a46cc6f7076692b7693c4e") }, { $unset: {"customers.customer.preferences.preferences.0":"" } } );
+    db.customer.update ( { _id: ObjectId("58a46cc6f7076692b7693c4e") }, { $set: {"customers.customer.lastName":"Morales" } } );
+    db.customer.update ( { _id: ObjectId("58a46cc6f7076692b7693c4e") }, { $push: {"customers.customer.contactPoints.contactPoints":{ $each:[{"priorityType":"high","qualityLevel":"good","lastUpdateSource":"C4C","contactAccount":null,"contactPhoneNumber":null,"contactAddress":null,"contactEmailAddress":{"emailCategory":"Business","emailAddress":{"email":"arianna.morales@gmail.com"}},"relatedContactPointId":null,"lastValidated":1369184569000,"effectiveFrom":1485734400000,"effectiveTo":1533769200000,"correlationID":"9692b484-3b5f-45fd-b514-1c146e5a3295"},{"priorityType":"high","qualityLevel":"good","lastUpdateSource":"C4C","contactAccount":null,"contactPhoneNumber":null,"contactAddress":null,"contactEmailAddress":{"emailCategory":"Business","emailAddress":{"email":"arianna.morales@yahoo.de"}},"relatedContactPointId":null,"lastValidated":1369184569000,"effectiveFrom":1485734400000,"effectiveTo":1533769200000,"correlationID":"9692b484-3b5f-45fd-b514-1c146e5a3295"}] },"customers.customer.notes.notes":{"note":"9QjNDYHNx","noteType":"ID card details","noteCode":"ID Card","noteSource":"8910470","test":"123"} } } );
+}
+----
+
+The org.onepointltd.json.converter.MongoCommands class can be directly converted into Javascript using the
+following method:
+
+[source,java]
+----
+org.onepointltd.json.converter.MongoCommands.asJavascript(boolean inFunction)
+----
+
