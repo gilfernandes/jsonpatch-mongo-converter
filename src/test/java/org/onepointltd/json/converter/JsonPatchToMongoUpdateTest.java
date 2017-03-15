@@ -65,6 +65,14 @@ class JsonPatchToMongoUpdateTest {
         assertThat(javascript.matches("(?m)(?s).+,\\s*\\).+")).isFalse();
     }
 
+    @Test
+    void whenCustomerPatchUpdate_ShouldHaveNoPush() throws IOException {
+        MongoConversion mongoConversion = jsonPatchToMongoUpdate.convert(MongoPatchProvider.getCustomerPatchUpdate());
+        assertThat(mongoConversion.getPush().isEmpty()).isTrue();
+        assertThat(mongoConversion.getSet().size()).isEqualTo(2);
+        assertThat(mongoConversion.getUnset().size()).isEqualTo(1);
+    }
+
     private void checkMongoConversion(MongoConversion res) throws IOException {
         MongoCommands mongoCommands = jsonPatchToMongoUpdate.convertToMongo(res, "customer");
         assertThat(mongoCommands).isNotNull();
@@ -79,7 +87,9 @@ class JsonPatchToMongoUpdateTest {
         assertThat(balancedBrackets(push)).isTrue();
         checkJson(convertToJson(unset));
         checkJson(convertToJson(set));
-        checkJson(convertToJson(push));
+        if(!push.isEmpty()) {
+            checkJson(convertToJson(push));
+        }
         System.out.println(unset);
         System.out.println(set);
         System.out.println(push);
@@ -110,9 +120,9 @@ class JsonPatchToMongoUpdateTest {
         MongoConversion res = MongoPatchProvider.createPatches1(jsonPatchToMongoUpdate);
         Set<String> unset = res.getUnset();
         assertThat(unset.size()).isEqualTo(1);
-        assertThat(res.getSet().size()).isEqualTo(8);
+        assertThat(res.getSet().size()).isEqualTo(11);
         Map<String, List<JsonNode>> push = res.getPush();
-        assertThat(push.size()).isEqualTo(4);
+        assertThat(push.size()).isEqualTo(1);
         List<JsonNode> notes = push.get("notes.notes");
         assertThat(notes.size()).isEqualTo(2);
         return res;

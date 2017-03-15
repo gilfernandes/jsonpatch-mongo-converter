@@ -1,0 +1,16 @@
+[
+  {
+    "op": "add",
+    "path": "/contactPoints/contactPoints/0/contactAddress/geographicalAddress/structuredAddress/region",
+    "value": "Greater London"
+  },
+  {
+    "op": "add",
+    "path": "/contactPoints/contactPoints/0/contactAddress/geographicalAddress/structuredAddress/county",
+    "value": "Brent"
+  },
+  {
+    "op": "remove",
+    "path": "/customerId/sourceKeys/keies/3"
+  }
+]

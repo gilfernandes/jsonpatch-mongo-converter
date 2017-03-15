@@ -21,10 +21,14 @@ public class MongoPatchProvider {
     }
 
     public static MongoConversion createPatches2(JsonPatchToMongoUpdate jsonPatchToMongoUpdate) throws IOException {
-        MongoConversion res;
         try(Reader reader = getPatch2Reader()) {
             return jsonPatchToMongoUpdate.convert(reader);
         }
+    }
+
+    public static InputStreamReader getCustomerPatchUpdate() {
+        return new InputStreamReader(Thread.currentThread().getContextClassLoader()
+                .getResourceAsStream("patch/customerPatchUpdate.json"));
     }
 
     public static InputStreamReader getPatch2Reader() {

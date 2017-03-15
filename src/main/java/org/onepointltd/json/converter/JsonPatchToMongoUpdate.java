@@ -39,8 +39,15 @@ public class JsonPatchToMongoUpdate {
             JsonNode value = p.get("value");
             switch (text) {
                 case "add": {
+                    boolean isArray = value.isArray() || path.matches(".+\\.\\d+$");
                     path = path.replaceFirst("\\.\\d+$", "");
-                    push.computeIfAbsent(path, (key) -> new ArrayList<>()).add(value);
+                    if(isArray) {
+                        // only apply push if there are array values
+                        push.computeIfAbsent(path, (key) -> new ArrayList<>()).add(value);
+                    }
+                    else {
+                        set.put(path, value);
+                    }
                     break;
                 }
                 case "remove": {
