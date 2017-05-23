@@ -3,10 +3,13 @@ package org.onepointltd.json.converter;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.onepointltd.json.converter.provider.MongoPatchProvider;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -55,7 +58,8 @@ class JsonPatchToMongoUpdateTest {
 
     @Test
     void whenConvertToMongoUpdates_3_ShouldProduceRightCommands() throws IOException {
-        MongoCommands mongoQueries = jsonPatchToMongoUpdate.convertToMongoUpdates(MongoPatchProvider.getPatchNoRemove(),
+        MongoCommands mongoQueries = jsonPatchToMongoUpdate.convertToMongoUpdates(
+                MongoPatchProvider.getPatchNoRemove(),
                 "{ _id: ObjectId(\"58a46cc6f7076692b7693c4e\") }", "customer", "customers", "customer");
         assertThat(mongoQueries.getSet().contains("\"customers.customer\""));
         assertThat(mongoQueries.getUnset().contains("\"customers.customer\""));
@@ -71,6 +75,18 @@ class JsonPatchToMongoUpdateTest {
         assertThat(mongoConversion.getPush().isEmpty()).isTrue();
         assertThat(mongoConversion.getSet().size()).isEqualTo(2);
         assertThat(mongoConversion.getUnset().size()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("Tests the pull command generation")
+    void convertComplexPullJson() throws IOException {
+        try(Reader reader = new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream("patch/complexPull.json"))) {
+            MongoCommands mongoQueries = jsonPatchToMongoUpdate.convertToMongoUpdates(reader,
+                    "{ _id: ObjectId(\"58a46cc6f7076692b7693c4e\") }", "customer", "customers");
+            assertThat(mongoQueries.getUnset()).isNotEmpty();
+            String javascript = mongoQueries.asJavascript(true);
+            assertThat(javascript).contains("$pull: {\"customers.contactPoints.contactPoints\": null }");
+        }
     }
 
     private void checkMongoConversion(MongoConversion res) throws IOException {

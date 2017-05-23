@@ -9,12 +9,15 @@ public class MongoCommands {
 
     private final String unset;
 
+    private final String pull;
+
     private final String set;
 
     private final String push;
 
-    MongoCommands(String unset, String set, String push) {
+    MongoCommands(String unset, String pull, String set, String push) {
         this.unset = unset;
+        this.pull = pull;
         this.set = set;
         this.push = push;
     }
@@ -31,11 +34,16 @@ public class MongoCommands {
         return push;
     }
 
+    public String getPull() {
+        return pull;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("");
         String lb = String.format("%n");
         sb.append("unset=").append(unset).append(lb);
+        sb.append("pull=").append(unset).append(lb);
         sb.append("set=").append(set).append(lb);
         sb.append("push=").append(push).append(lb);
         return sb.toString();
@@ -51,6 +59,9 @@ public class MongoCommands {
         }
         if(hasText(unset)) {
             sb.append("    ").append(unset).append(lb);
+        }
+        if(hasText(pull)) {
+            sb.append("    ").append(pull).append(lb);
         }
         if(hasText(set)) {
             sb.append("    ").append(set).append(lb);

@@ -1,0 +1,178 @@
+[{
+  "op": "replace",
+  "path": "/firstName",
+  "value": "Thorsten"
+},
+  {
+    "op": "remove",
+    "path": "/contactPoints/contactPoints/4"
+  },
+  {
+    "op": "replace",
+    "path": "/contactPoints/contactPoints/8/contactEmailAddress/emailAddress/email",
+    "value": "th.markgraf@sasha.com"
+  },
+  {
+    "op": "replace",
+    "path": "/contactPoints/contactPoints/10/contactEmailAddress/emailAddress/email",
+    "value": "th.markgraf@gil.com"
+  },
+  {
+    "op": "add",
+    "path": "/contactPoints/contactPoints/12",
+    "value": {
+      "contactAddress": {
+        "geographicalAddress": {
+          "country": {
+            "isoCode2La": "GB"
+          },
+          "postCode": {
+            "postCode": "1 N"
+          },
+          "structuredAddress": {
+            "buildingNumber": "61",
+            "buildingName": "T House",
+            "subBuilding": "M Division",
+            "street": "Main Street Avenue",
+            "subStreet": "Sub street road",
+            "town": "London",
+            "region": "Brent",
+            "county": "Cricklewood",
+            "poBox": "12312123213"
+          }
+        }
+      },
+      "effectiveTo": 1495472507872,
+      "correlationID": "f7079a40-5759-4d30-86fa-687996e0bb82"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/contactPoints/contactPoints/13",
+    "value": {
+      "priorityType": "high",
+      "qualityLevel": "good",
+      "lastUpdateSource": "C4C",
+      "contactAddress": {
+        "geographicalAddress": {
+          "country": {
+            "isoCode2La": "GB"
+          },
+          "postCode": {
+            "postCode": "NW6JL"
+          },
+          "unStructuredAddress": {
+            "addressLine1": "T House M Division",
+            "addressLine2": "Main Street Avenue",
+            "addressLine3": "Sub street road",
+            "addressLine4": "London",
+            "addressLine5": "Brent",
+            "addressLine6": "Cricklewood",
+            "addressLine7": "12312123213"
+          }
+        }
+      },
+      "effectiveTo": 1495472507872
+    }
+  },
+  {
+    "op": "add",
+    "path": "/contactPoints/contactPoints/14",
+    "value": {
+      "contactPhoneNumber": {
+        "lineType": "Mobile",
+        "phoneNumberCategory": "Private",
+        "structuredPhoneNumber": {
+          "areaCode": 170,
+          "localNumber": 33333333,
+          "internationalDialingCode": {
+            "internationalDialingCode": "+49",
+            "country": {
+              "country": "DE DE DE DE DE DE",
+              "isoCode2La": "DE"
+            }
+          }
+        }
+      },
+      "effectiveTo": 1495472507872,
+      "correlationID": "9692b484-3b5f-45fd-b514-1c146e5a3295"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/contactPoints/contactPoints/15",
+    "value": {
+      "contactPhoneNumber": {
+        "lineType": "Mobile",
+        "phoneNumberCategory": "Private",
+        "structuredPhoneNumber": {
+          "areaCode": 170,
+          "localNumber": 55555555,
+          "internationalDialingCode": {
+            "internationalDialingCode": "+49",
+            "country": {
+              "country": "DE DE DE DE DE DE",
+              "isoCode2La": "DE"
+            }
+          }
+        }
+      },
+      "effectiveTo": 1495472507872,
+      "correlationID": "e5d04dd8-d608-442d-a9b5-2a6843a8d7b5"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/contactPoints/contactPoints/16",
+    "value": {
+      "contactPhoneNumber": {
+        "lineType": "Mobile",
+        "phoneNumberCategory": "Private",
+        "unStructuredPhoneNumber": {
+          "phoneNumber": "+44 123123131312123",
+          "formatType": "UK style"
+        }
+      },
+      "effectiveTo": 1495472507872,
+      "correlationID": "e5d04dd8-d608-442d-a9b5-2a6843a8d7b5"
+    }
+  },
+  {
+    "op": "add",
+    "path": "/contactPoints/contactPoints/17",
+    "value": {
+      "contactEmailAddress": {
+        "emailCategory": "Business",
+        "emailAddress": {
+          "email": "th.markgraf@@somecompanys.com"
+        }
+      },
+      "effectiveTo": 1495472507873
+    }
+  },
+  {
+    "op": "add",
+    "path": "/contactPoints/contactPoints/18",
+    "value": {
+      "contactEmailAddress": {
+        "emailCategory": "Business",
+        "emailAddress": {
+          "email": "th.markgrafsomecompanys.com"
+        }
+      },
+      "effectiveTo": 1495472507873
+    }
+  },
+  {
+    "op": "add",
+    "path": "/contactPoints/contactPoints/19",
+    "value": {
+      "contactAccount": {
+        "id": "92827hhh012323",
+        "name": "Facebook",
+        "credential": "f123131",
+        "type": "bla"
+      },
+      "effectiveTo": 1495472507873
+    }
+  }]
